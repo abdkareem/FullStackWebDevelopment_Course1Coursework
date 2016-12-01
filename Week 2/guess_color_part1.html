@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Guess The Color | CR1</title>
+        <meta charset="utf-8">
+        <script>
+            
+            function setColorsArray() {
+                //Global variable defined without using the var keyword
+                colorsArray = ["bisque", "blue", "gray", "green", "indigo", "lightgreen", "linen", "orange", "red", "springgreen", "violet", "yellow"];
+            }
+            
+            function getColorsArray() {
+                return colorsArray;
+            }
+            
+            function promptUser(holder) {
+                response = prompt("I am thinking of one of the following colors: \n\n" + getColorsArray() + "\n\n\nWhat color am I thinking of ?");
+                return response;
+            }
+            
+            function do_game() {
+                //generate random number between 0 (inclusive) and 12 (exclsive) and use that number to query the colorsArray global variable for a random color.
+                //Store the random color local variable targetvariable
+                targetcolor = colorsArray[Math.floor(Math.random() * 12)];
+                //peekaboo, to help debugging and marking.
+                alert("The target color is: " + targetcolor);
+                do {
+                    //note that tempchecker is a global variable holding the value returned by promptUser function.
+                    tempchecker = promptUser(targetcolor);
+                    if (targetcolor == tempchecker) {
+                        alert("you guessed the right color.");
+                    }
+                }
+                while (targetcolor != tempchecker);
+            }
+        </script>
+    </head>
+    <body>
+        <script>
+            setColorsArray();
+            do_game();
+        </script>
+    
+    </body>
+
+</html>

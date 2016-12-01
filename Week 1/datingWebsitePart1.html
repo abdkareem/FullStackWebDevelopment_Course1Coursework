@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head lang="en">
+        <title>Dating Website | Part 1</title>
+        <meta charset="utf-8">
+        <meta name="author" content="Abdul Kareem">
+        <meta name="description" content="dating website form part 1">
+    </head>
+    <body lang="en">
+        <h2>Please Enter Your Details For Our Dating Website!</h2>
+        <form action="https://ihome.ust.hk/~rossiter/cgi-bin/show_everything.php" method="post" enctype="multipart/form-data">
+            
+            <fieldset>
+                <legend>Your Face</legend>
+                <label for="avatar">Your Image:</label>
+                <input type="file" id="avatar" name="avatar" required>
+                <br>
+                Image preview:
+                <img id="preview">
+            </fieldset>
+            
+            <fieldset>
+                <legend>Your General Details</legend>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" placeholder="Your full name" required>
+                <br>
+                <label for="gender">Gender:</label>
+                <input type="radio" id="gender" name="gender" value="male" required>Male
+                <input type="radio" id="gender" name="gender" value="female">Female
+                <br>
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age" required>
+                <br>
+                <label for="dob">Date of birth:</label>
+                <input type="date" id="dob" name="dob">
+                <br>
+                <label for="fcolor">Favorite color:</label>
+                <input type="color" id="fcolor" name="fcolor">
+                <br>
+                <label for="country">Which country:</label>
+                <select id="country">
+                    <option name="country" value="no selection">no selection</option>
+                    <option name="country" value="United States">United States</option>
+                    <option name="country" value="Canada">Canada</option>
+                    <option name="country" value="China">China</option>
+                    <option name="country" value="Hong Kong">Hong Kong</option>
+                    <option name="country" value="India">India</option>  
+                </select>        
+            </fieldset>
+            
+            <fieldset>
+                <legend>Your Indicators:</legend>
+                <label for="height">Height:</label>
+                <span>Short</span><input type="range" id="height" name="height" min="0" max="100" step="10"><span>Tall</span>
+                <br>
+                <label for="salary">Salary:</label>
+                <span>Poor</span><input type="range" id="salary" name="salary" min="0" max="100" step="10"><span>Rich</span>
+                <br>
+            </fieldset>
+            
+            <fieldset>
+                <legend>Your Contact Information:</legend>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <br>
+                <label for="mobile">Mobile:</label>
+                <input type="tel" id="mobile" name="mobile">
+                <br>
+                <label for="address">Address:</label>
+                <textarea id="address" name="address" rows="5" cols="50">
+                </textarea>
+                <br>
+                <label for="contactvia">Method to contact you:</label>
+                <input type="checkbox" id="contactvia" name="methodtocontact" value="email">Email
+                <input type="checkbox" id="contactvia" name="methodtocontact" value="whatsapp">Whatsapp
+                <input type="checkbox" id="contactvia" name="methodtocontact" value="in-app chat">In-app chat
+            </fieldset>
+            <input type="submit" value="submit">
+        </form>
+    </body>
+</html>

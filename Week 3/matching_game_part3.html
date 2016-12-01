@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Part1 | Matching Game</title>
+        <style>
+            #leftside, #rightside { 
+                /*width and height*/
+                width: 500px;
+                height: 500px;
+                
+                /*positioning on page*/
+                position: absolute;   
+            }
+            #rightside {
+                left: 510px;
+                border-left: 1px solid gray; 
+            }
+            img {
+                position: absolute;
+            }
+        </style>
+        
+    </head>
+    <body>
+        <h2>Matching Game</h2>
+        <p>Click on the extra similing face on the left side</p>        
+        <div id="leftside">
+            
+        </div>
+        <div id="rightside">
+    
+        </div>
+        
+        <script>
+            numberOfFaces = 5;
+            leftSideElementHolder = document.getElementById("leftside");
+            rightSideElementHolder = document.getElementById("rightside");
+            
+            function generateFaces() {
+                for (var x=1;x<=numberOfFaces;x++) {
+                    var imgELement = document.createElement("img");
+                    imgELement.setAttribute("src","https://home.cse.ust.hk/~rossiter/mooc/matching_game/smile.png")
+                    imgELement.style.top = (Math.floor(Math.random() * 400))+"px";
+                    imgELement.style.left = (Math.floor(Math.random() * 400)) +"px";
+                    leftSideElementHolder.appendChild(imgELement);
+                    
+                     //alert("leftsideelement holder current children count inside function: " + (leftSideElementHolder.childNodes).length);
+                    
+                    
+                }
+                leftsideImages = leftSideElementHolder.cloneNode(true);
+                    //alert("left side image children count " + (leftsideImages.childNodes).length);
+                leftsideImages.removeChild(leftsideImages.lastChild);    
+                rightSideElementHolder.appendChild(leftsideImages);
+            }
+            window.addEventListener("load",generateFaces, false);
+             
+        </script>
+    </body>
+</html>

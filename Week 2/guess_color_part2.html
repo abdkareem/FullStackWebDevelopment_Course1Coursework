@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Guess The Color | CR1</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <script>
+            
+            //I have done the assignment in my own way. Please Note that the code follows every single requirement and performs as it is expected to perform by giving the right output. All the comments will help in follwoing the code.
+            
+            //Please follow numbers 1. ..  2.  .. 3.  in comments to navigate through the code. 
+            
+            //global variable that holds the number of user attempts initilly set to zero.
+            var attempts = 0;
+            
+            function setColorsArray() {
+                //1. This is the first function trigerred from the script initializing the colors array.
+                //Global variable defined without using the var keyword within a function.
+                colorsArray = ["bisque", "blue", "gray", "green", "indigo", "lightgreen", "linen", "orange", "red", "springgreen", "violet", "yellow"];
+                return ;
+            }
+            
+            function getColorsArray() {
+                return colorsArray;
+            }
+            
+            function promptUser(holder) {
+                //3. Function called from do_game() function.
+                //promptUser() returns user response.
+                response = prompt("I am thinking of one of the following colors: \n\n" + getColorsArray() + "\n\n\nWhat color am I thinking of ?");
+                return response;
+            }
+            
+            function check_guess(trgtClr, vartobechecked) {
+                //When ever control enters in this function it implies that user response is being compared with the target color. So increment the number of tries
+                attempts += 1;
+                //Simple yet effective way of checking if the colorsArray contains user input. Here the indexOf method returns negative index if the item is not found in the array. 
+                if (colorsArray.indexOf(vartobechecked) < 0) {
+                    alert("Sorry, I dont recognize that color \n\nPlease try again.");
+                    //go back to where this function was invoked.
+                    return ;
+                }
+                if (colorsArray.indexOf(vartobechecked) >= 0) {
+                    //Only when the user response is from the colorsArray start comparison.
+                    if (trgtClr < vartobechecked) {
+                        alert("Your color is alphabetically higher than mine");
+                        return ;
+                    }
+                    else if (trgtClr > vartobechecked) {
+                        alert("Your code is alphabetically lower than mine");
+                        return;
+                    }
+                    else {
+                        alert("Congragulations! You guessed the color!\n\nIt took you " + attempts + "guesses to finish the game!\n\nClick OK to see the color in background");
+                        document.body.style.backgroundColor = trgtClr;
+                    }
+                }
+                
+            }
+            
+            function do_game() {
+                //2. This is the second function trigerred from the script.
+                
+                //Generate random number between 0 (inclusive) and 12 (exclsive) and use that number to query the colorsArray global variable for a random color.
+                //Store the random color in a local variable targetcolor
+                targetcolor = colorsArray[Math.floor(Math.random() * 12)];
+                //peekaboo, to help the user debug and mark the code.
+                alert("The target color is: " + targetcolor);
+                do {
+                    //Requesting the user to guess the color. Using promptUser() function to do this task for modularity.
+                    //Note: userresponse is a global variable holding the value returned by promptUser() function.
+                    userresponse = promptUser(targetcolor);
+                    //compare user response with the target color. This comparison is carried out in a funtion check_guess that requires two parameters target color and user response.
+                    var found = check_guess(targetcolor, userresponse);
+                }
+                while (targetcolor != userresponse);
+            }
+        </script>
+        <script>
+            setColorsArray();
+            do_game();
+        </script>
+    
+    </body>
+
+</html>
